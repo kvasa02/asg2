@@ -104,7 +104,7 @@ var g_lowerAngle = 0;
 
 function updateAnimation() {
   if (g_animation) {
-    const phase = Math.sin(g_clock * 3); // Slower animation for ant-like movement
+    const phase = Math.sin(g_clock * 3);
     g_upperAngle = 15 * phase;
     g_lowerAngle = -20 * phase;
   }
@@ -182,28 +182,28 @@ function renderAllShapes() {
 function createLeg(xOffset, zOffset, length, side) {
   // Coxa (hip joint)
   const coxa = new Cube();
-  coxa.color = [0.25, 0.15, 0.15, 1.0];
+  coxa.color = [0, 0, 0, 1.0];  // Changed to black
   coxa.matrix.translate(xOffset, -0.05, zOffset);
-  coxa.matrix.rotate(side * (30 + g_upperAngle), 0, 0, 1);  // Increased angle
-  coxa.matrix.scale(0.03, 0.03, length / 3);  // Thicker and longer
+  coxa.matrix.rotate(side * (30 + g_upperAngle), 0, 0, 1);
+  coxa.matrix.scale(0.03, 0.03, length / 3);
   g_shapesList.push(coxa);
 
   // Femur (thigh)
   const femur = new Cube();
-  femur.color = [0.3, 0.2, 0.2, 1.0];
+  femur.color = [0, 0, 0, 1.0];  // Changed to black
   femur.matrix = new Matrix4(coxa.matrix);
   femur.matrix.translate(0, 0, length / 3);
-  femur.matrix.rotate(side * (25 + g_lowerAngle), 0, 0, 1);  // Increased angle
-  femur.matrix.scale(1, 1, 1.4);  // Longer segment
+  femur.matrix.rotate(side * (25 + g_lowerAngle), 0, 0, 1);
+  femur.matrix.scale(1, 1, 1.4);
   g_shapesList.push(femur);
 
   // Tibia (lower leg)
   const tibia = new Cube();
-  tibia.color = [0.35, 0.25, 0.25, 1.0];
+  tibia.color = [0, 0, 0, 1.0];  // Changed to black
   tibia.matrix = new Matrix4(femur.matrix);
   tibia.matrix.translate(0, 0, length / 3 * 1.4);
-  tibia.matrix.rotate(side * (15 + g_lowerAngle / 2), 0, 0, 1);  // Increased angle
-  tibia.matrix.scale(0.8, 0.8, 1.5);  // Longer segment
+  tibia.matrix.rotate(side * (15 + g_lowerAngle / 2), 0, 0, 1);
+  tibia.matrix.scale(0.8, 0.8, 1.5);
   g_shapesList.push(tibia);
 }
 
